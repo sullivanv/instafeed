@@ -1,0 +1,49 @@
+<div id="instafeedfooter" style="width:100%;width: 100%;display: flex;margin-top: 100pt;">
+</div>
+<div id="instafeedfooter1" style="width:100%;width: 100%;display: flex;">
+</div>
+<script src="{{ 'instafeed.min.js' | asset_url }}"></script>
+<script type="text/javascript">
+  var userFeed = new Instafeed({
+    get: 'user',
+    userId: 'USER_ID',
+    resolution: 'thumbnail',
+    mock: true,
+    limit: 60,
+    accessToken: 'ACESS_TOKEN',
+    success:function(data){
+      var images = data.data;
+      var x = 0;
+      while (x < 10)
+      {
+        var image = images[x];
+        var div = document.createElement('div');
+        div.setAttribute("class", "instaFooterSulli");
+        div.setAttribute("style", "width:20%");
+        var lien = document.createElement('a');
+        lien.setAttribute("href", images[x].link);
+        lien.setAttribute("target", "_blank");
+        
+        
+        var imageBalise = document.createElement('img');
+        var src = image.images.standard_resolution.url;
+        var alt = "Dans ma ride";
+        
+        imageBalise.setAttribute("src", src);
+        imageBalise.setAttribute("alt", alt);
+        imageBalise.setAttribute("style", "width:100%;heigth:100%;");
+        
+        if (y <= 5)
+        {
+            document.getElementById('instafeedfooter').appendChild(div).appendChild(lien).appendChild(imageBalise);
+        }
+        else
+        {
+              document.getElementById('instafeedfooter1').appendChild(div).appendChild(lien).appendChild(imageBalise);
+        }
+        x++;
+      }
+    }
+  });
+  userFeed.run();
+</script>
